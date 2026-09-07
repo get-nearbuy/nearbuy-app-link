@@ -10,25 +10,27 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
+      // Connects your live tracking property with custom overrides for this specific link name
       gtag('config', 'G-1JGTRQ6R0B', {
         'page_title': 'Download nearbuy App',
         'page_path': '/nearbuy-app-link/'
       });
     </script>
 
-    <!-- Primary Meta Tags for Social Previews -->
+    <!-- Primary Meta Tags for Social Media Card Previews -->
     <title>Download nearbuy App</title>
     <meta name="title" content="Download nearbuy App — Food, Spa & Salon Deals">
     <meta name="description" content="Get the best deals, discounts, and cashback offers on nearby restaurants, buffets, spas, salons, movie tickets, and amusement parks.">
 
-    <!-- Open Graph / Facebook / WhatsApp Preview Cards -->
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.io">
     <meta property="og:title" content="Download nearbuy App — Food, Spa & Salon Deals">
     <meta property="og:description" content="Get the best deals, discounts, and cashback offers on nearby restaurants, buffets, spas, salons, movie tickets, and amusement parks.">
     <meta property="og:image" content="https://googleusercontent.com">
 
-    <!-- Twitter Preview Cards -->
+    <!-- Twitter Card Rules -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://github.io">
     <meta property="twitter:title" content="Download nearbuy App — Food, Spa & Salon Deals">
@@ -38,14 +40,14 @@
     <script>
         function routeUser() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var targetURL = "https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile"; // Default to Play Store
-
-            // Strict iOS Device Identification
+            var targetURL = "https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile"; // Default/Android Destination
+            
+            // Check for iOS Devices (iPhone, iPad, iPod)
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                targetURL = "https://apple.com";
+                targetURL = "https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742";
             }
 
-            // Execute the routing safely after the GA4 analytics buffer delay
+            // Holds redirection for 600ms so GA4 data packets ship successfully before browser unloads the code
             setTimeout(function() {
                 window.location.replace(targetURL);
             }, 600);
@@ -66,24 +68,36 @@
         }
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #ef4353;
+            border-top: 4px solid #ef4353; /* Nearbuy brand red tone */
             border-radius: 50%;
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        a { color: #ef4353; text-decoration: none; font-weight: bold; margin: 0 10px; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: #ef4353;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            display: inline-block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body onload="routeUser()">
+
     <div class="loader"></div>
     <h2>Opening nearbuy App...</h2>
-    <p>If you are not redirected automatically, tap below:</p>
+    <p>If you are not redirected automatically, tap a link below:</p>
     <p>
-        <a href="https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile">Android</a> | 
-        <a href="https://apple.com">iOS</a>
+        <a href="https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile">Download for Android</a> | 
+        <a href="https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742">Download for iOS</a>
     </p>
+
 </body>
 </html>
