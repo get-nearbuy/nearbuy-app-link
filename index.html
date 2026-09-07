@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting to nearbuy...</title>
+    
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://googletagmanager.com"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1JGTRQ6R0B');
+    </script>
+
     <script>
         function routeUser() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             
             // 1. Check for Android Devices
             if (/android/i.test(userAgent)) {
-                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
+                window.location.replace("https://google.com");
             }
             // 2. Check for iOS Devices (iPhone, iPad, iPod)
             else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -18,7 +28,7 @@
             }
             // 3. Fallback for Desktop Users (Redirects to Play Store Web view)
             else {
-                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
+                window.location.replace("https://google.com");
             }
         }
     </script>
@@ -56,13 +66,13 @@
         }
     </style>
 </head>
-<body onload="routeUser()">
+<body onload="setTimeout(routeUser, 600)">
 
     <div class="loader"></div>
     <h2>Opening nearbuy App...</h2>
     <p>If you are not redirected automatically, tap a link below:</p>
     <p>
-        <a href="https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile">Download for Android</a> | 
+        <a href="https://google.com">Download for Android</a> | 
         <a href="https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742">Download for iOS</a>
     </p>
 
