@@ -64,18 +64,19 @@
     <h2>Download Nearbuy App</h2>
     <p>Please select your platform or click below to launch the correct App Store download page.</p>
     
-    <!-- This dynamic button changes automatically based on OS, serving as the main action button -->
+    <!-- Core Blue App-Store Launcher Link Button -->
     <a id="smart-btn" class="btn" href="#">Download Now</a>
     
-    <!-- Alternate options if users need manual selection overrides -->
-    <a class="btn btn-secondary" href="https://google.com" target="_blank" rel="noopener noreferrer">Android Play Store</a>
-    <a class="btn btn-secondary" href="https://apple.com" target="_blank" rel="noopener noreferrer">iOS App Store</a>
+    <!-- Hardcoded manual native application anchors -->
+    <a class="btn btn-secondary" href="intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end">Android Play Store</a>
+    <a class="btn btn-secondary" href="https://apple.com">iOS App Store</a>
 </div>
 
 <script type="text/javascript">
-    // Safe Device Context Verification 
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    var androidUrl = "https://google.com";
+    
+    // NATIVE INTENT: Forces Android to launch the local Google Play App instead of the browser page
+    var androidIntent = "intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end";
     var iosUrl = "https://apple.com";
     
     var smartBtn = document.getElementById('smart-btn');
@@ -84,12 +85,11 @@
         smartBtn.href = iosUrl;
         smartBtn.innerText = "Download for iOS";
     } else if (/Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1) {
-        // Fallback rule mapping for iPads mimicking modern macOS Safari profiles
         smartBtn.href = iosUrl;
         smartBtn.innerText = "Download for iPadOS";
     } else {
-        // Safe global standard deployment defaults straight to Google Play Store endpoint paths
-        smartBtn.href = androidUrl;
+        // Defaults directly to the Native Play Store Intent string
+        smartBtn.href = androidIntent;
         smartBtn.innerText = "Download for Android";
     }
 </script>
