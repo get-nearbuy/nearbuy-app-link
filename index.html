@@ -1,32 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        // 1. Detect the operating system immediately
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        var androidIntent = "intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end";
-        var iosUrl = "https://apple.com";
-        var desktopFallback = "https://google.com";
-
-        // 2. Perform the execution immediately before the body even loads
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            window.location.replace(iosUrl);
-        } else if (/android/i.test(userAgent)) {
-            window.location.replace(androidIntent);
-        } else if (/Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1) {
-            window.location.replace(iosUrl);
-        } else {
-            // If on a desktop computer, take them to the web Play Store
-            window.location.replace(desktopFallback);
+    <title>Redirecting to nearbuy...</title>
+    <script>
+        function routeUser() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // 1. Check for Android Devices
+            if (/android/i.test(userAgent)) {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
+            }
+            // 2. Check for iOS Devices (iPhone, iPad, iPod)
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.replace("https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742");
+            }
+            // 3. Fallback for Desktop Users (Redirects to Play Store Web view)
+            else {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
+            }
         }
     </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ef4353; /* Nearbuy brand red tone */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: #ef4353;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body style="background-color: #f9f9f9; text-align: center; font-family: sans-serif; padding-top: 100px;">
-    <!-- Safe fallback visible only for a split second or if a device completely blocks redirects -->
-    <p style="color: #666; font-size: 16px;">Redirecting you to the appropriate App Store...</p>
-    <p style="font-size: 14px;"><a href="https://google.com" style="color: #0066cc;">Click here if you are not automatically redirected</a>.</p>
+<body onload="routeUser()">
+
+    <div class="loader"></div>
+    <h2>Opening nearbuy App...</h2>
+    <p>If you are not redirected automatically, tap a link below:</p>
+    <p>
+        <a href="https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile">Download for Android</a> | 
+        <a href="https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742">Download for iOS</a>
+    </p>
+
 </body>
 </html>
