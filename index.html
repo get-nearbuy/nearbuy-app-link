@@ -3,96 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get the Nearbuy App</title>
-    <style>
-        body {
-            background-color: #f4f6f9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        // 1. Detect the operating system immediately
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var androidIntent = "intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end";
+        var iosUrl = "https://apple.com";
+        var desktopFallback = "https://google.com";
+
+        // 2. Perform the execution immediately before the body even loads
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.replace(iosUrl);
+        } else if (/android/i.test(userAgent)) {
+            window.location.replace(androidIntent);
+        } else if (/Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1) {
+            window.location.replace(iosUrl);
+        } else {
+            // If on a desktop computer, take them to the web Play Store
+            window.location.replace(desktopFallback);
         }
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 320px;
-            width: 100%;
-        }
-        h2 {
-            color: #333333;
-            margin-bottom: 8px;
-            font-size: 22px;
-        }
-        p {
-            color: #666666;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-        .btn {
-            display: block;
-            background-color: #007bff;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
-            transition: background 0.2s;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 5px rgba(0,123,255,0.2);
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .btn-secondary {
-            background-color: #28a745;
-            box-shadow: 0 2px 5px rgba(40,167,69,0.2);
-        }
-        .btn-secondary:hover {
-            background-color: #218838;
-        }
-    </style>
+    </script>
 </head>
-<body>
-
-<div class="container">
-    <h2>Download Nearbuy App</h2>
-    <p>Please select your platform or click below to launch the correct App Store download page.</p>
-    
-    <!-- Core Blue App-Store Launcher Link Button -->
-    <a id="smart-btn" class="btn" href="#">Download Now</a>
-    
-    <!-- Hardcoded manual native application anchors -->
-    <a class="btn btn-secondary" href="intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end">Android Play Store</a>
-    <a class="btn btn-secondary" href="https://apple.com">iOS App Store</a>
-</div>
-
-<script type="text/javascript">
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // NATIVE INTENT: Forces Android to launch the local Google Play App instead of the browser page
-    var androidIntent = "intent://details?id=com.nearbuy.nearbuymobile#Intent;scheme=market;package=com.android.vending;end";
-    var iosUrl = "https://apple.com";
-    
-    var smartBtn = document.getElementById('smart-btn');
-
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        smartBtn.href = iosUrl;
-        smartBtn.innerText = "Download for iOS";
-    } else if (/Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1) {
-        smartBtn.href = iosUrl;
-        smartBtn.innerText = "Download for iPadOS";
-    } else {
-        // Defaults directly to the Native Play Store Intent string
-        smartBtn.href = androidIntent;
-        smartBtn.innerText = "Download for Android";
-    }
-</script>
-
+<body style="background-color: #f9f9f9; text-align: center; font-family: sans-serif; padding-top: 100px;">
+    <!-- Safe fallback visible only for a split second or if a device completely blocks redirects -->
+    <p style="color: #666; font-size: 16px;">Redirecting you to the appropriate App Store...</p>
+    <p style="font-size: 14px;"><a href="https://google.com" style="color: #0066cc;">Click here if you are not automatically redirected</a>.</p>
 </body>
 </html>
