@@ -3,54 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google tag (gtag.js) - Google Analytics -->
-    <script async src="https://googletagmanager.com"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      // Connects your live tracking property with custom overrides for this specific link name
-      gtag('config', 'G-1JGTRQ6R0B', {
-        'page_title': 'Download nearbuy App',
-        'page_path': '/nearbuy-app-link/'
-      });
-    </script>
-
-    <!-- Primary Meta Tags for Social Media Card Previews -->
-    <title>Download nearbuy App</title>
-    <meta name="title" content="Download nearbuy App — Food, Spa & Salon Deals">
-    <meta name="description" content="Get the best deals, discounts, and cashback offers on nearby restaurants, buffets, spas, salons, movie tickets, and amusement parks.">
-
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.io">
-    <meta property="og:title" content="Download nearbuy App — Food, Spa & Salon Deals">
-    <meta property="og:description" content="Get the best deals, discounts, and cashback offers on nearby restaurants, buffets, spas, salons, movie tickets, and amusement parks.">
-    <meta property="og:image" content="https://googleusercontent.com">
-
-    <!-- Twitter Card Rules -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://github.io">
-    <meta property="twitter:title" content="Download nearbuy App — Food, Spa & Salon Deals">
-    <meta property="twitter:description" content="Get the best deals, discounts, and cashback offers on nearby restaurants, buffets, spas, salons, movie tickets, and amusement parks.">
-    <meta property="twitter:image" content="https://googleusercontent.com">
-
+    <title>Redirecting to nearbuy...</title>
     <script>
         function routeUser() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var targetURL = "https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile"; // Default/Android Destination
             
-            // Check for iOS Devices (iPhone, iPad, iPod)
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                targetURL = "https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742";
+            // 1. Check for Android Devices
+            if (/android/i.test(userAgent)) {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
             }
-
-            // Holds redirection for 600ms so GA4 data packets ship successfully before browser unloads the code
-            setTimeout(function() {
-                window.location.replace(targetURL);
-            }, 600);
+            // 2. Check for iOS Devices (iPhone, iPad, iPod)
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.replace("https://apps.apple.com/in/app/nearbuy-the-lifestyle-app/id1030758742");
+            }
+            // 3. Fallback for Desktop Users (Redirects to Play Store Web view)
+            else {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.nearbuy.nearbuymobile");
+            }
         }
     </script>
     <style>
@@ -83,8 +52,6 @@
             color: #ef4353;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 10px;
-            display: inline-block;
             margin-top: 10px;
         }
     </style>
